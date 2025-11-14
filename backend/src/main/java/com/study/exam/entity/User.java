@@ -10,8 +10,14 @@ import lombok.EqualsAndHashCode;
 @Table(name = "user")
 public class User extends BaseEntity {
 
-    @Column(name = "openid", unique = true, nullable = false)
+    @Column(name = "openid", unique = true)
     private String openid;
+
+    @Column(name = "username", unique = true)
+    private String username;
+
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "nickname")
     private String nickname;

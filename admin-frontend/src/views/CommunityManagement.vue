@@ -31,9 +31,35 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
+import { getPostList } from '@/api/admin'
+import { ElMessage } from 'element-plus'
 
 const activeTab = ref('all')
 const postList = ref([])
 const loading = ref(false)
+
+const loadPosts = async () => {
+  loading.value = true
+  try {
+    const params = {}
+    if (activeTab.value !== 'all') {
+      params.type = activeTab.value.toUpperCase()
+    }
+    const data = await getPostList(params)
+    postList.value = data || []
+  } catch (error) {
+    ElMessage.error('加载帖子列表失败')
+  } finally {
+    loading.value = false
+  }
+}
+
+watch(activeTab, () => {
+  loadPosts()
+})
+
+onMounted(() => {
+  loadPosts()
+})
 </script>

@@ -17,6 +17,11 @@ public class LearningPlanController {
 
     private final LearningPlanService planService;
 
+    @GetMapping("/list")
+    public Result<List<LearningPlan>> getAllPlans() {
+        return Result.success(planService.getAllPlans());
+    }
+
     @GetMapping("/user/{userId}")
     public Result<List<LearningPlan>> getUserPlans(@PathVariable Long userId) {
         return Result.success(planService.getUserPlans(userId));

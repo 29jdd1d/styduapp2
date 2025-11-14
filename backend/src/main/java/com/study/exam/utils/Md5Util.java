@@ -10,6 +10,10 @@ public class Md5Util {
         return DigestUtil.md5Hex(text);
     }
 
+    public static String md5(String text) {
+        return DigestUtil.md5Hex(text);
+    }
+
     public static String encrypt(String text, String salt) {
         return DigestUtil.md5Hex(text + salt);
     }
