@@ -1,0 +1,29 @@
+page {
+  background-color: #f5f5f5;
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+}
+
+.container {
+  padding: 20rpx;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.btn-primary {
+  background-color: #409eff;
+  color: #fff;
+  border-radius: 8rpx;
+}

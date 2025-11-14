@@ -1,0 +1,53 @@
+.tabs {
+  display: flex;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 28rpx;
+  color: #666;
+  border-bottom: 4rpx solid transparent;
+}
+
+.tab-item.active {
+  color: #409eff;
+  border-bottom-color: #409eff;
+  font-weight: bold;
+}
+
+.resource-list {
+  padding: 0 20rpx;
+}
+
+.resource-item {
+  margin-bottom: 20rpx;
+}
+
+.resource-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.resource-desc {
+  font-size: 26rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 15rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resource-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+}

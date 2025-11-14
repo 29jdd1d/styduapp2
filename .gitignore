@@ -1,0 +1,31 @@
+# Backend
+backend/target/
+backend/.idea/
+backend/*.iml
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+
+# Admin Frontend
+admin-frontend/node_modules/
+admin-frontend/dist/
+admin-frontend/.vite/
+admin-frontend/.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak

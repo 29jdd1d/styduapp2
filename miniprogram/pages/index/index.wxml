@@ -1,0 +1,58 @@
+<view class="container">
+  <!-- Banner -->
+  <swiper class="banner-swiper" indicator-dots autoplay>
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <view class="banner-item">
+        <text class="banner-title">{{item.title}}</text>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- User Info Card -->
+  <view class="card user-card" wx:if="{{userInfo}}">
+    <view class="user-header">
+      <image class="avatar" src="{{userInfo.avatar}}" mode="aspectFill"></image>
+      <view class="user-info">
+        <text class="nickname">{{userInfo.nickname}}</text>
+        <text class="target">目标: {{userInfo.targetUniversity || '未设置'}}</text>
+      </view>
+    </view>
+    
+    <view class="stats" wx:if="{{dashboard}}">
+      <view class="stat-item">
+        <text class="stat-value">{{dashboard.studyDays}}</text>
+        <text class="stat-label">学习天数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{dashboard.totalStudyTime}}</text>
+        <text class="stat-label">学习时长(分)</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{dashboard.accuracy}}%</text>
+        <text class="stat-label">正确率</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Quick Links -->
+  <view class="card">
+    <text class="title">快速入口</text>
+    <view class="quick-links">
+      <view 
+        class="link-item" 
+        wx:for="{{quickLinks}}" 
+        wx:key="title"
+        bindtap="navigateTo"
+        data-path="{{item.path}}"
+      >
+        <text class="link-icon">{{item.icon}}</text>
+        <text class="link-title">{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Login Button -->
+  <view class="login-btn" wx:if="{{!userInfo}}" bindtap="wxLogin">
+    <button class="btn-primary">微信一键登录</button>
+  </view>
+</view>

@@ -1,0 +1,111 @@
+.banner-swiper {
+  width: 100%;
+  height: 300rpx;
+  margin-bottom: 20rpx;
+}
+
+.banner-item {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-title {
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.user-card {
+  margin-bottom: 20rpx;
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.nickname {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.target {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #409eff;
+  margin-bottom: 10rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+.link-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+}
+
+.link-icon {
+  font-size: 48rpx;
+  margin-bottom: 10rpx;
+}
+
+.link-title {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.login-btn {
+  margin-top: 40rpx;
+}
+
+.login-btn button {
+  width: 100%;
+}
