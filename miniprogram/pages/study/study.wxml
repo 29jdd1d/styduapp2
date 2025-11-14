@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="tabs">
+    <view 
+      class="tab-item {{activeTab === index ? 'active' : ''}}" 
+      wx:for="{{subjects}}" 
+      wx:key="index"
+      bindtap="onTabChange"
+      data-index="{{index}}"
+    >
+      {{item}}
+    </view>
+  </view>
+
+  <view class="resource-list">
+    <view 
+      class="card resource-item" 
+      wx:for="{{resources}}" 
+      wx:key="id"
+      bindtap="viewResource"
+      data-id="{{item.id}}"
+    >
+      <text class="resource-title">{{item.title}}</text>
+      <text class="resource-desc">{{item.description}}</text>
+      <view class="resource-meta">
+        <text class="meta-item">浏览: {{item.viewCount}}</text>
+        <text class="meta-item">类型: {{item.type}}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="card" wx:if="{{currentPlan}}">
+    <text class="title">{{currentPlan.title}}</text>
+    <view class="plan-info">
+      <text>目标院校: {{currentPlan.targetUniversity}}</text>
+      <text>目标专业: {{currentPlan.targetMajor}}</text>
+    </view>
+    <view class="progress-section">
+      <text>完成进度</text>
+      <progress percent="{{currentPlan.progress}}" show-info stroke-width="8" />
+      <text class="progress-text">{{currentPlan.completedTasks}}/{{currentPlan.totalTasks}}</text>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{currentPlan && currentPlan.tasks}}">
+    <text class="title">任务列表</text>
+    <view class="task-list">
+      <view 
+        class="task-item {{task.status === 'COMPLETED' ? 'completed' : ''}}" 
+        wx:for="{{currentPlan.tasks}}" 
+        wx:key="id"
+        wx:for-item="task"
+      >
+        <view class="task-info">
+          <text class="task-title">{{task.title}}</text>
+          <text class="task-date">{{task.scheduledDate}}</text>
+        </view>
+        <button 
+          class="task-btn" 
+          size="mini" 
+          wx:if="{{task.status !== 'COMPLETED'}}"
+          bindtap="completeTask"
+          data-id="{{task.id}}"
+        >
+          完成
+        </button>
+        <text class="completed-mark" wx:else>✓</text>
+      </view>
+    </view>
+  </view>
+
+  <button class="btn-primary" bindtap="createPlan" wx:if="{{!currentPlan}}">
+    创建学习计划
+  </button>
+</view>

@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="tabs">
+    <view 
+      class="tab-item {{activeTab === item.value ? 'active' : ''}}" 
+      wx:for="{{tabs}}" 
+      wx:key="value"
+      bindtap="onTabChange"
+      data-tab="{{item.value}}"
+    >
+      {{item.label}}
+    </view>
+  </view>
+
+  <view class="post-list">
+    <view 
+      class="card post-item" 
+      wx:for="{{posts}}" 
+      wx:key="id"
+      bindtap="viewPost"
+      data-id="{{item.id}}"
+    >
+      <text class="post-title">{{item.title}}</text>
+      <text class="post-content">{{item.content}}</text>
+      <view class="post-meta">
+        <text class="meta-item">👁 {{item.viewCount}}</text>
+        <text class="meta-item">👍 {{item.likeCount}}</text>
+        <text class="meta-item">💬 {{item.commentCount}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="fab" bindtap="createPost">
+    <text>+</text>
+  </view>
+</view>

@@ -1,0 +1,73 @@
+.plan-info {
+  margin: 20rpx 0;
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+}
+
+.plan-info text {
+  display: block;
+  margin: 10rpx 0;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.progress-section {
+  margin-top: 30rpx;
+}
+
+.progress-section text {
+  display: block;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.progress-text {
+  text-align: center;
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.task-list {
+  margin-top: 20rpx;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.task-item.completed {
+  opacity: 0.5;
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-title {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.task-date {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.task-btn {
+  background-color: #409eff;
+  color: #fff;
+}
+
+.completed-mark {
+  font-size: 36rpx;
+  color: #67c23a;
+}

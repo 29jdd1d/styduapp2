@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="header">
+    <image class="avatar" src="{{userInfo.avatar}}" mode="aspectFill"></image>
+    <view class="user-info">
+      <text class="nickname">{{userInfo.nickname}}</text>
+      <text class="target">{{userInfo.targetUniversity}} - {{userInfo.targetMajor}}</text>
+    </view>
+    <button class="edit-btn" size="mini" bindtap="editProfile">编辑</button>
+  </view>
+
+  <view class="card stats-card" wx:if="{{dashboard}}">
+    <view class="stat-item">
+      <text class="stat-value">{{dashboard.studyDays}}</text>
+      <text class="stat-label">学习天数</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">{{dashboard.totalStudyTime}}</text>
+      <text class="stat-label">总学习时长(分)</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">{{dashboard.totalQuestionsAnswered}}</text>
+      <text class="stat-label">答题数</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">{{dashboard.accuracy}}%</text>
+      <text class="stat-label">正确率</text>
+    </view>
+  </view>
+
+  <view class="card menu-list">
+    <view class="menu-item">
+      <text>我的收藏</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-item">
+      <text>错题本</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-item">
+      <text>学习记录</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-item">
+      <text>设置</text>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+
+  <button class="logout-btn" bindtap="logout">退出登录</button>
+</view>
