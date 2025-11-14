@@ -34,8 +34,30 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { ElMessage } from 'element-plus'
+import request from '@/utils/request'
 
 const planList = ref([])
 const loading = ref(false)
+
+const loadPlans = async () => {
+  loading.value = true
+  try {
+    // Get all plans - we'll need to create an endpoint for this
+    const data = await request({
+      url: '/plan/list',
+      method: 'get'
+    })
+    planList.value = data || []
+  } catch (error) {
+    ElMessage.error('加载学习计划失败')
+  } finally {
+    loading.value = false
+  }
+}
+
+onMounted(() => {
+  loadPlans()
+})
 </script>

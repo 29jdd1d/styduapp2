@@ -51,7 +51,8 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
+import { getQuestionList } from '@/api/admin'
 import { ElMessage } from 'element-plus'
 
 const questionList = ref([])
@@ -61,13 +62,36 @@ const searchForm = reactive({
   difficulty: ''
 })
 
+const loadQuestions = async () => {
+  loading.value = true
+  try {
+    const params = {}
+    if (searchForm.subject) {
+      params.subject = searchForm.subject
+    }
+    if (searchForm.difficulty) {
+      params.difficulty = searchForm.difficulty
+    }
+    const data = await getQuestionList(params)
+    questionList.value = data || []
+  } catch (error) {
+    ElMessage.error('加载题目列表失败')
+  } finally {
+    loading.value = false
+  }
+}
+
 const addQuestion = () => {
   ElMessage.info('添加题目功能')
 }
 
 const search = () => {
-  ElMessage.info('搜索题目')
+  loadQuestions()
 }
+
+onMounted(() => {
+  loadQuestions()
+})
 </script>
 
 <style scoped>

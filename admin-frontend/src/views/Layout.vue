@@ -41,7 +41,21 @@
       <el-header class="header">
         <div class="header-title">{{ currentTitle }}</div>
         <div class="header-right">
-          <el-icon><Setting /></el-icon>
+          <el-dropdown @command="handleCommand">
+            <span class="user-info">
+              <el-icon><User /></el-icon>
+              <span>{{ userInfo.nickname || userInfo.username }}</span>
+              <el-icon class="el-icon--right"><ArrowDown /></el-icon>
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item command="logout">
+                  <el-icon><SwitchButton /></el-icon>
+                  退出登录
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
         </div>
       </el-header>
       
@@ -54,12 +68,39 @@
 
 <script setup>
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import { ElMessageBox, ElMessage } from 'element-plus'
+import { logout } from '@/api/admin'
+import { useAuthStore } from '@/store/auth'
 
 const route = useRoute()
+const router = useRouter()
+const authStore = useAuthStore()
 
 const activeMenu = computed(() => route.path)
 const currentTitle = computed(() => route.meta.title || '管理后台')
+const userInfo = computed(() => authStore.userInfo)
+
+const handleCommand = async (command) => {
+  if (command === 'logout') {
+    try {
+      await ElMessageBox.confirm('确定要退出登录吗？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+      
+      await logout()
+      authStore.clearAuth()
+      ElMessage.success('退出成功')
+      router.push('/login')
+    } catch (error) {
+      if (error !== 'cancel') {
+        ElMessage.error('退出失败')
+      }
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -122,6 +163,20 @@ const currentTitle = computed(() => route.meta.title || '管理后台')
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.user-info:hover {
+  background-color: #f5f7fa;
 }
 
 .main-content {

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import router from '@/router'
 
 const request = axios.create({
   baseURL: '/api',
@@ -31,7 +32,14 @@ request.interceptors.response.use(
     return res.data
   },
   error => {
-    ElMessage.error(error.message || 'Network Error')
+    if (error.response && error.response.status === 401) {
+      ElMessage.error('登录已过期，请重新登录')
+      localStorage.removeItem('token')
+      localStorage.removeItem('userInfo')
+      router.push('/login')
+    } else {
+      ElMessage.error(error.message || 'Network Error')
+    }
     return Promise.reject(error)
   }
 )

@@ -22,6 +22,10 @@ public class LearningPlanService {
     private final LearningPlanRepository planRepository;
     private final PlanTaskRepository taskRepository;
 
+    public List<LearningPlan> getAllPlans() {
+        return planRepository.findAll();
+    }
+
     public List<LearningPlan> getUserPlans(Long userId) {
         return planRepository.findByUserIdAndDeletedFalse(userId);
     }

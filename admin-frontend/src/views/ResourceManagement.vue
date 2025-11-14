@@ -42,19 +42,40 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
+import { getResourceList } from '@/api/admin'
 import { ElMessage } from 'element-plus'
 
 const activeTab = ref('all')
 const resourceList = ref([])
 const loading = ref(false)
 
+const loadResources = async () => {
+  loading.value = true
+  try {
+    const params = {}
+    if (activeTab.value !== 'all') {
+      params.category = activeTab.value
+    }
+    const data = await getResourceList(params)
+    resourceList.value = data || []
+  } catch (error) {
+    ElMessage.error('加载资源列表失败')
+  } finally {
+    loading.value = false
+  }
+}
+
 const addResource = () => {
   ElMessage.info('添加资源功能')
 }
 
+watch(activeTab, () => {
+  loadResources()
+})
+
 onMounted(() => {
-  // Load resources
+  loadResources()
 })
 </script>
 
