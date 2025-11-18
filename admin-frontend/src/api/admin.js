@@ -32,7 +32,7 @@ export function getUserList(params) {
 
 export function getResourceList(params) {
   return request({
-    url: '/resource/list',
+    url: '/admin/resource/list',
     method: 'get',
     params
   })
@@ -48,7 +48,7 @@ export function getQuestionList(params) {
 
 export function getPostList(params) {
   return request({
-    url: '/community/post/list',
+    url: '/admin/community/post/list',
     method: 'get',
     params
   })
