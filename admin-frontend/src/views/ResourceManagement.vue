@@ -32,8 +32,8 @@
         </el-table-column>
         <el-table-column label="操作" fixed="right" width="200">
           <template #default="{ row }">
-            <el-button type="primary" size="small">编辑</el-button>
-            <el-button type="danger" size="small">删除</el-button>
+            <el-button type="primary" size="small" @click="handleEdit(row)">编辑</el-button>
+            <el-button type="danger" size="small" @click="handleDelete(row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -43,8 +43,8 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
-import { getResourceList } from '@/api/admin'
-import { ElMessage } from 'element-plus'
+import { getResourceList, deleteResource } from '@/api/admin'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 const activeTab = ref('all')
 const resourceList = ref([])
@@ -68,6 +68,32 @@ const loadResources = async () => {
 
 const addResource = () => {
   ElMessage.info('添加资源功能')
+}
+
+const handleEdit = (row) => {
+  ElMessage.info(`编辑资源: ${row.title}`)
+}
+
+const handleDelete = async (row) => {
+  try {
+    await ElMessageBox.confirm(
+      `确定要删除资源 "${row.title}" 吗？`,
+      '提示',
+      {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }
+    )
+    
+    await deleteResource(row.id)
+    ElMessage.success('删除成功')
+    loadResources()
+  } catch (error) {
+    if (error !== 'cancel') {
+      ElMessage.error('删除失败')
+    }
+  }
 }
 
 watch(activeTab, () => {
