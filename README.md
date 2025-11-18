@@ -221,9 +221,27 @@ npm run dev
 
 ### 管理后台模块
 
-- `GET /api/admin/statistics/overview` - 获取数据概览
+#### 用户管理
 - `GET /api/admin/user/list` - 获取用户列表
+- `GET /api/admin/user/{id}` - 获取用户详情
 - `DELETE /api/admin/user/{id}` - 删除用户
+
+#### 资源管理
+- `GET /api/admin/resource/list` - 获取资源列表
+- `GET /api/admin/resource/{id}` - 获取资源详情
+- `POST /api/admin/resource` - 创建资源
+- `POST /api/admin/resource/upload` - 上传资源文件
+- `PUT /api/admin/resource/{id}` - 更新资源
+- `DELETE /api/admin/resource/{id}` - 删除资源
+
+#### 社区管理
+- `GET /api/admin/community/post/list` - 获取帖子列表
+- `GET /api/admin/community/post/{id}` - 获取帖子详情
+- `PUT /api/admin/community/post/{id}` - 更新帖子
+- `DELETE /api/admin/community/post/{id}` - 删除帖子
+
+#### 统计数据
+- `GET /api/admin/statistics/overview` - 获取数据概览
 
 ## 开发指南
 
